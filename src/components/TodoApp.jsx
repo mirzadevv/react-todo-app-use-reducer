@@ -10,7 +10,6 @@ const TodoApp = () => {
         newTodos.unshift(action.payload);
         return newTodos;
       }
-
       case "completedChange": {
         const newTodos = todos.map((item) => {
           if (todo.id === item.id) {
@@ -19,10 +18,12 @@ const TodoApp = () => {
             return item;
           }
         });
-
         return newTodos;
       }
-
+      case "delete": {
+        const newTodos = todos.filter((todoItem) => todoItem.id !== todo.id);
+        return newTodos;
+      }
       default:
         return todos;
     }
