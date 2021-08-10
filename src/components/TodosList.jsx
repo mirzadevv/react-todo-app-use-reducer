@@ -1,5 +1,5 @@
 import React from "react";
-const TodosList = ({ todos }) => {
+const TodosList = ({ todos, dispatchTodos }) => {
   return (
     <div className="list-wrapper">
       <ul className="d-flex flex-column todo-list">
@@ -10,7 +10,10 @@ const TodosList = ({ todos }) => {
             {todos.map((todo) => (
               <li
                 key={todo.id}
-                className={todo.isCompleted ? "completed" : null}
+                className={todo.isCompleted ? "completed" : ""}
+                onClick={() =>
+                  dispatchTodos({ type: "completedChange", payload: todo })
+                }
               >
                 <div className="form-check">
                   <label className="form-check-label">

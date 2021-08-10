@@ -3,10 +3,23 @@ import InputForm from "./InputForm";
 import TodosList from "./TodosList";
 const TodoApp = () => {
   const reducer = (todos, action) => {
+    const todo = action.payload;
     switch (action.type) {
       case "add": {
         const newTodos = [...todos];
         newTodos.unshift(action.payload);
+        return newTodos;
+      }
+
+      case "completedChange": {
+        const newTodos = todos.map((item) => {
+          if (todo.id === item.id) {
+            return { ...item, isCompleted: !todo.isCompleted };
+          } else {
+            return item;
+          }
+        });
+
         return newTodos;
       }
 
@@ -15,7 +28,6 @@ const TodoApp = () => {
     }
   };
   const [todos, dispatchTodos] = useReducer(reducer, []);
-  console.log(todos);
 
   return (
     <div className="page-content page-container" id="page-content">
@@ -25,7 +37,7 @@ const TodoApp = () => {
             <div className="card-body">
               <h4 className="card-title">Simple Todo App</h4>
               <InputForm dispatchTodos={dispatchTodos} />
-              <TodosList todos={todos} />
+              <TodosList todos={todos} dispatchTodos={dispatchTodos} />
             </div>
           </div>
         </div>
