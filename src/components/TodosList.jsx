@@ -8,16 +8,19 @@ const TodosList = ({ todos, dispatchTodos }) => {
         ) : (
           <>
             {todos.map((todo) => (
-              <li
-                key={todo.id}
-                className={todo.isCompleted ? "completed" : ""}
-                onClick={() =>
-                  dispatchTodos({ type: "completedChange", payload: todo })
-                }
-              >
+              <li key={todo.id} className={todo.isCompleted ? "completed" : ""}>
                 <div className="form-check">
                   <label className="form-check-label">
-                    <input className="checkbox" type="checkbox" />
+                    <input
+                      className="checkbox"
+                      type="checkbox"
+                      onClick={() =>
+                        dispatchTodos({
+                          type: "completedChange",
+                          payload: todo,
+                        })
+                      }
+                    />
                     {todo.title}
                     <i className="input-helper"> </i>
                   </label>
