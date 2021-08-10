@@ -20,7 +20,7 @@ const TodoApp = () => {
             <div className="card-body">
               <h4 className="card-title">Simple Todo App</h4>
               <InputForm dispatchTodos={dispatchTodos} />
-              <TodosList />
+              <TodosList todos={todos} />
             </div>
           </div>
         </div>
