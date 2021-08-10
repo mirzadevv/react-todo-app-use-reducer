@@ -3,10 +3,15 @@ import InputForm from "./InputForm";
 import TodosList from "./TodosList";
 const TodoApp = () => {
   const reducer = (todos, action) => {
-    if ((action.type = "add")) {
-      const newTodos = [...todos];
-      newTodos.unshift(action.payload);
-      return newTodos;
+    switch (action.type) {
+      case "add": {
+        const newTodos = [...todos];
+        newTodos.unshift(action.payload);
+        return newTodos;
+      }
+
+      default:
+        return todos;
     }
   };
   const [todos, dispatchTodos] = useReducer(reducer, []);
