@@ -1,4 +1,5 @@
 import React from "react";
+import InputForm from "./InputForm";
 const TodoApp = () => {
   return (
     <div className="page-content page-container" id="page-content">
@@ -6,17 +7,8 @@ const TodoApp = () => {
         <div className="col-md-12">
           <div className="card px-3">
             <div className="card-body">
-              <h4 className="card-title">Awesome Todo list</h4>
-              <div className="add-items d-flex">
-                <input
-                  type="text"
-                  className="form-control todo-list-input"
-                  placeholder="What do you need to do today?"
-                />
-                <button className="add btn btn-primary font-weight-bold todo-list-add-btn">
-                  Add
-                </button>
-              </div>
+              <h4 className="card-title">Simple Todo App</h4>
+              <InputForm />
               <div className="list-wrapper">
                 <ul className="d-flex flex-column todo-list">
                   <li>
